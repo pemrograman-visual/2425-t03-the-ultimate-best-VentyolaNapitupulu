@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="t01"/>
+        <attribute name="authors" value="ASUS"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-02 05:51:51 PM"/>
+        <attribute name="created" value="QVNVUztMQVBUT1AtQ0I4SzRBVDk7MjAyNC0wOS0wNjsxMDo1NjoyOCBBTTsyNjIx"/>
+        <attribute name="edited" value="QVNVUztMQVBUT1AtQ0I4SzRBVDk7MjAyNC0xMC0wMjswNTo1MTo1MSBQTTs2OzI3MzI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="kodeisbn, judul, penulis, penerbit, formatbuku, kategori, kesimpulan, nilaidiskon" type="String" array="False" size=""/>
+            <declare name="tahunterbit, stok" type="Integer" array="False" size=""/>
+            <declare name="hargapembelian, minimummargin, rating" type="Real" array="False" size=""/>
+            <input variable="kodeisbn"/>
+            <while expression="kodeisbn!=&quot;---&quot;">
+                <input variable="judul"/>
+                <input variable="penulis"/>
+                <input variable="tahunterbit"/>
+                <input variable="penerbit"/>
+                <input variable="formatbuku"/>
+                <input variable="hargapembelian"/>
+                <input variable="minimummargin"/>
+                <if expression="-(minimummargin/hargapembelian)&gt;0.4">
+                    <then>
+                        <assign variable="nilaidiskon" expression="&quot;Once in a lifetime&quot;"/>
+                    </then>
+                    <else>
+                        <if expression="0.2&lt;-(minimummargin/hargapembelian)&amp;&amp;(minimummargin/hargapembelian)&lt;0.4">
+                            <then>
+                                <assign variable="nilaidiskon" expression="&quot;Never come twice&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="(-(minimummargin/hargapembelian))&lt;=0.2 &amp;&amp; (-(minimummargin/hargapembelian))&gt;0">
+                                    <then>
+                                        <assign variable="nilaidiskon" expression="&quot;no regret&quot;"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="nilaidiskon" expression="&quot;---&quot;"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <input variable="stok"/>
+                <input variable="rating"/>
+                <if expression="rating &gt;=4.7">
+                    <then>
+                        <assign variable="kategori" expression="&quot;Best Pick&quot;"/>
+                    </then>
+                    <else>
+                        <if expression="rating&gt;=4.5">
+                            <then>
+                                <assign variable="kategori" expression="&quot;Must Read&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="rating&gt;=4.0">
+                                    <then>
+                                        <assign variable="kategori" expression="&quot;Recommended&quot;"/>
+                                    </then>
+                                    <else>
+                                        <if expression="rating&gt;=3.0">
+                                            <then>
+                                                <assign variable="kategori" expression="&quot;Average&quot;"/>
+                                            </then>
+                                            <else>
+                                                <assign variable="kategori" expression="&quot;Low&quot;"/>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="nilaidiskon=&quot;Once in a lifetime&quot; and kategori=&quot;Best Pick&quot;">
+                    <then>
+                        <assign variable="kesimpulan" expression="&quot;The Ultimate Best&quot;"/>
+                    </then>
+                    <else>
+                        <assign variable="kesimpulan" expression="&quot;---&quot;"/>
+                    </else>
+                </if>
+                <output expression="kodeisbn&amp; &quot;|&quot; &amp;judul&amp; &quot;|&quot; &amp;penulis&amp; &quot;|&quot; &amp;tahunterbit&amp; &quot;|&quot; &amp;penerbit&amp; &quot;|&quot; &amp;formatbuku&amp; &quot;|&quot; &amp;hargapembelian&amp; &quot;|&quot; &amp;minimummargin&amp; &quot;|&quot; &amp;stok&amp; &quot;|&quot; &amp;tofixed(rating,1)&amp; &quot;|&quot;&amp;kategori&amp; &quot;|&quot; &amp;nilaidiskon&amp; &quot;|&quot; &amp;kesimpulan" newline="False"/>
+                <input variable="kodeisbn"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>
