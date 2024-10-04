@@ -1,8 +1,6 @@
 // 12S24039 - Jody Alfonso Siahaan
 // 12S24042 - Ventyola Rohati Napitupulu
 
-
-
 import java.util.*;
 import java.lang.Math;
 
@@ -10,7 +8,8 @@ public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String kodeisbn, judul, penulis, penerbit, formatbuku, kategori, kesimpulan, nilaidiskon;
+        String kodeisbn, judul, penulis, penerbit, formatbuku, jenisdiskon, conclusion;
+        String keterangan;
         int tahunterbit, stok;
         double hargapembelian, minimummargin, rating;
 
@@ -24,43 +23,43 @@ public class T03 {
             hargapembelian = Double.parseDouble(input.nextLine());
             minimummargin = Double.parseDouble(input.nextLine());
             if (-(minimummargin / hargapembelian) > 0.4) {
-                nilaidiskon = "Once in a lifetime";
+                jenisdiskon = "Once in a lifetime";
             } else {
                 if (0.2 < -(minimummargin / hargapembelian) && minimummargin / hargapembelian < 0.4) {
-                    nilaidiskon = "Never come twice";
+                    jenisdiskon = "Never come twice";
                 } else {
-                    if (-(minimummargin / hargapembelian) <= 0.2 && -(minimummargin / hargapembelian) > 0) {
-                        nilaidiskon = "no regret";
+                    if (-(minimummargin / hargapembelian) <= 0.2 && -minimummargin / hargapembelian > 0) {
+                        jenisdiskon = "No regret";
                     } else {
-                        nilaidiskon = "---";
+                        jenisdiskon = "---";
                     }
                 }
             }
             stok = Integer.parseInt(input.nextLine());
             rating = Double.parseDouble(input.nextLine());
             if (rating >= 4.7) {
-                kategori = "Best Pick";
+                keterangan = "Best Pick";
             } else {
                 if (rating >= 4.5) {
-                    kategori = "Must Read";
+                    keterangan = "Must Read";
                 } else {
                     if (rating >= 4.0) {
-                        kategori = "Recommended";
+                        keterangan = "Recommended";
                     } else {
                         if (rating >= 3.0) {
-                            kategori = "Average";
+                            keterangan = "Average";
                         } else {
-                            kategori = "Low";
+                            keterangan = "Low";
                         }
                     }
                 }
             }
-            if (nilaidiskon.equals("Once in a lifetime") && kategori.equals("Best Pick")) {
-                kesimpulan = "The Ultimate Best";
+            if (jenisdiskon.equals("Once in a lifetime") && keterangan.equals("Best Pick")) {
+                conclusion = "The ultimate best";
             } else {
-                kesimpulan = "---";
+                conclusion = "---";
             }
-            System.out.print(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + toFixed(rating,1) + "|" + kategori + "|" + nilaidiskon + "|" + kesimpulan);
+            System.out.println(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + toFixed(rating,1) + "|" + keterangan + "|" + jenisdiskon + "|" + conclusion);
             kodeisbn = input.nextLine();
         }
     }
